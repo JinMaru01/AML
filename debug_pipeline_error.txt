@@ -1,0 +1,8 @@
+Running training pipeline...
+Traceback (most recent call last):
+  File "C:\Users\rachi\OneDrive\Desktop\Project\AML\src\pipeline.py", line 96, in <module>
+    main()
+  File "C:\Users\rachi\OneDrive\Desktop\Project\AML\src\pipeline.py", line 27, in main
+    print(f"Training features: {X.columns.tolist()}")
+                                ^
+UnboundLocalError: cannot access local variable 'X' where it is not associated with a value
