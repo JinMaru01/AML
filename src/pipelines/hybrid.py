@@ -4,14 +4,11 @@ import argparse
 import sys
 import os
 
-# Add root to path
-sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
-
-from src.state.store import InMemoryStateStore
-from src.logic.vadalog_engine import VadalogEngine
-from src.logic.automata import Automata
-from src.models.anomaly import AnomalyDetector
-from src.features import load_data, preprocess_features
+from state.store import InMemoryStateStore
+from logic.vadalog_engine import VadalogEngine
+from logic.automata import Automata
+from models.anomaly import AnomalyDetector
+from features import load_data, preprocess_features
 
 def run_pipeline(trans_path, acc_path, output_path):
     print("Initializing Hybrid System...")

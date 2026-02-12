@@ -12,7 +12,7 @@ class Database:
         if Database._engine is None:
             Database._config = self._load_config()
             Database._engine = self._create_engine(echo)
-            self._init_schema()
+            self._init_schema(Database)
 
     def _load_config(self) -> Dict[str, Any]:
         cfg = load_env_by_prefix("MLAPP", [])
@@ -26,8 +26,8 @@ class Database:
             "adapter": cfg.get("adapter", "postgresql+psycopg2"),
         }
 
-    def _create_engine(self, cls, echo: bool) -> Engine:
-        c = cls._config
+    def _create_engine(self, echo: bool) -> Engine:
+        c = Database._config
         url = (
             f"{c['adapter']}://{c['user']}:{c['password']}"
             f"@{c['host']}:{c['port']}/{c['database']}"

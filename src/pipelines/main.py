@@ -3,10 +3,7 @@ import pandas as pd
 import sys
 import os
 
-# Add the project root to python path to allow imports if run from inside src or root
-sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
-
-from src.features import load_data, preprocess_features
+from features import load_data, preprocess_features
 
 
 def main():

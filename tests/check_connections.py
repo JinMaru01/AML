@@ -8,6 +8,7 @@ from pathlib import Path
 project_root = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(project_root))
 
+from sqlalchemy import text
 from src.core.database import Database
 from src.core.redis import RedisClient
 
@@ -19,12 +20,12 @@ def test_database_connection():
     print("="*50)
     
     try:
-        db = Database()
-        engine = db.engine()
+        db = Database(echo=True)
+        engine = db.engine(db)
         
         # Test query
         with engine.connect() as conn:
-            result = conn.execute("SELECT 1 as test")
+            result = conn.execute(text("SELECT 1 as test"))
             row = result.fetchone()
             print(f"✅ Database query successful: {row}")
         
