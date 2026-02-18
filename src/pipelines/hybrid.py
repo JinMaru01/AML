@@ -4,11 +4,16 @@ import argparse
 import sys
 import os
 
-from state.store import InMemoryStateStore
-from logic.vadalog_engine import VadalogEngine
-from logic.automata import Automata
-from models.anomaly import AnomalyDetector
-from features import load_data, preprocess_features
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+
+import warnings
+warnings.filterwarnings("ignore")
+
+from src.state.store import InMemoryStateStore
+from src.logic.vadalog_engine import VadalogEngine
+from src.logic.automata import Automata
+from src.models.anomaly import AnomalyDetector
+from src.features import load_data, preprocess_features
 
 def run_pipeline(trans_path, acc_path, output_path):
     print("Initializing Hybrid System...")
@@ -88,7 +93,8 @@ def run_pipeline(trans_path, acc_path, output_path):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--trans", default="data/LI-Small_Trans.csv")
+    # parser.add_argument("--trans", default="data/LI-Small_Trans.csv")
+    parser.add_argument("--trans", default="data/sample500.csv")
     parser.add_argument("--acc", default="data/LI-Small_accounts.csv")
     parser.add_argument("--out", default="hybrid_alerts.csv")
     args = parser.parse_args()
